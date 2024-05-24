@@ -1,0 +1,24 @@
+const int Buzzer = 3;
+
+void setup() {
+  Serial.begin(9600); //enabling the serial monitor
+  pinMode(2, OUTPUT);  //setting digital pin 2 as output LED pin
+  pinMode(Buzzer, OUTPUT); //Setting up the buzzer pin 9 as OUTPUT
+}
+void loop() {
+  int value = analogRead(A3); //reading value from analogPin A3
+  Serial.println("Value: "); //printing the sentence value
+  Serial.println(value); //printing the actual value 
+  //using if-else statement to check if water is there on the rain sensor module or not
+  if(value < 300){
+    digitalWrite(2, HIGH);
+    Serial.print("Heavy Rain Detected, Turn on LED ");
+    tone(Buzzer, 1000); //sending a sound signal of 1KHz
+    delay(1000);
+  }
+  else{
+    digitalWrite(2, LOW);
+    noTone(Buzzer);
+    delay(1000); //delaying the buzzer for 1 second
+  }
+}
