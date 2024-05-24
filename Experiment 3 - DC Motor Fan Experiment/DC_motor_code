@@ -1,0 +1,34 @@
+//defining variables
+#define ENABLE 5
+#define DIRA 3
+#define DIRB 4
+int j;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(ENABLE, OUTPUT);
+  pinMode(DIRA, OUTPUT);
+  pinMode(DIRB, OUTPUT);
+  Serial.begin(9600);
+
+  }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  Serial.println("Start the Motors!");
+  //using for loop
+  for(j = 255; j > 100; j--){
+    digitalWrite(DIRA, HIGH);
+    digitalWrite(DIRB, LOW);
+
+    analogWrite(ENABLE, j);
+    delay(200);
+  }
+  for(j = 10; j > 255; j++){
+    digitalWrite(DIRA, HIGH);
+    digitalWrite(DIRB, LOW);
+
+    analogWrite(ENABLE, j);
+    delay(200);
+  }
+  }
